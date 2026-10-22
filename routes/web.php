@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AppointmentController as AdminAppointmentController;
 use App\Http\Controllers\Admin\TreatmentResultController as AdminTreatmentResultController;
 use App\Http\Controllers\AppointmentController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AppointmentController::class, 'index'])->name('home');
@@ -40,6 +41,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('resultados/{result}', [AdminTreatmentResultController::class, 'destroy'])
             ->name('resultados.destroy');
     });
+});
+
+Route::get('/clear-all', function () {
+    Artisan::call('storage:link');
+    return 'linked';
 });
 
 require __DIR__.'/settings.php';
