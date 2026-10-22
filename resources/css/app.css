@@ -7,6 +7,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+    --color-luda-navy: #001330;
+    --color-luda-blue: #115b8a;
+    --color-luda-sky: #93bcd0;
+    --color-luda-mist: #f4f8fa;
+    --color-luda-ink: #0f172a;
+}
+
 @theme inline {
     --font-sans:
         Instrument Sans, ui-sans-serif, system-ui, sans-serif,
@@ -168,5 +176,14 @@
     }
     body {
         @apply bg-background text-foreground;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    section[id],
+    footer[id] {
+        scroll-margin-top: 8rem;
     }
 }
